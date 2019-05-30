@@ -32,8 +32,8 @@ app.get("/api/forecast/:latitude/:longitude/:uuid", (req, res) => {
 
     let [latitude, longitude, uuid] = [req.params.latitude, req.params.longitude, req.params.uuid];
 
-    latitude = Number(latitude).toFixed(2);
-    longitude = Number(longitude).toFixed(2);
+    latitude = Number(latitude).toFixed(config.location_precision);
+    longitude = Number(longitude).toFixed(config.location_precision);
 
     const location = `${latitude}:${longitude}`;
 
