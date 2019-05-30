@@ -41,7 +41,7 @@ app.get("/api/forecast/:latitude/:longitude/:uuid", (req, res) => {
 
     if (data) {
         return util.forecast({
-            response: res,
+            res: res,
             uuid: uuid,
             data: data,
             cached: true,
@@ -60,7 +60,7 @@ app.get("/api/forecast/:latitude/:longitude/:uuid", (req, res) => {
         }
 
         return util.forecast({
-            response: res,
+            res: res,
             uuid: uuid,
             location: location,
             data: JSON.parse(body)
