@@ -1,6 +1,15 @@
-# Before running the aplication
+# Before running the application
 
-Make sure to either add your [Darsky](https://darksky.net) api key into the `config.js` file or start your node application passing the `API_KEY` argument.
+Change the default values of `api_key` and `secret_key`. Following are two possible ways of changing them:
+
+1) edit the `config.js` file and insert your own API/secret key;
+2) start the node application using both `API_KEY` and `SECRET_KEY` arguments;
+
+You can find your **API key** into your [Darsky](https://darksky.net) account settings.
+
+The **secret key** is intended to protect your endpoints from unathorized access. 
+
+Create a random key and ensure that every request sent to your API inform the same key into the `secretKey` body parameter.
 
 # Installing the dependencies
 
@@ -22,9 +31,9 @@ npm run dev
 
 Following is a brief explanation about the available endpoints:
 
-`[GET] /status`: return the name and version of the application  
-`[GET] /users/dump`: return the stored users  
-`[GET] /cache/:location/dump`: return the cached JSON for the given location. Location format is $latitude:$longitude  
-`[GET] /api/forecast/:latitude/:longitude/:uuid`: return the forecast for the given location (lat/long)  
+`[GET] /status`: return the name and version of the application
+`[POST] /users`: return the stored users
+`[POST] /cache/:location`: return the cached JSON for the given location. Location format is $latitude:$longitude
+`[POST] /api/forecast`: return the forecast for the given location. Mandatory body parameters are: `latitude`, `longitude` and `uuid`. 
 
-Any other endpoint will return an internal server error (http status 500).
+Any other endpoint will return a NOT FOUND (http status 404)

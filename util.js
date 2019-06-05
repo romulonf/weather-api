@@ -1,4 +1,5 @@
 const config = require("./config");
+const darksky = require("./darksky");
 const usersCache = require("./users.cache");
 const temporalCache = require("./temporal.cache");
 
@@ -13,27 +14,30 @@ module.exports = {
 
         let user = usersCache.get(opts.uuid);
 
-        let requests = user.requests;
+        let requests = user.requests,
+            history = requests.history;
 
-        requests.push({
+        history.push({
             cached: cached,
             time: Date.now(),
             location: location
         });
 
-        if (requests.length > config.location_log_size) {
-            requests.shift();
+        if (history.length > config.location_log_size) {
+            history.shift();
         }
 
         if (cached) {
-            ++user.cached_calls;
+            ++requests.cached;
         } else {
-            ++user.non_cached_calls;
-            temporalCache.set(location, data);
+            ++requests.new;
+            temporalCache.set(location, data, config.forecast_cache_duration);
         }
 
+        const forecastData = cached ? darksky.currentForecast(data) : data.currently;
+
         return response.status(200).send({
-            ...data,
+            ...forecastData,
             _cached: cached
         });
 

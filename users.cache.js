@@ -7,9 +7,11 @@ function get(key) {
     if (!user) {
 
         user = {
-            cached_calls: 0,
-            non_cached_calls: 0,
-            requests: []
+            requests: {
+                new: 0,
+                cached: 0,
+                history: []
+            }
         };
 
         set(key, user);
