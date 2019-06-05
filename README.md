@@ -1,4 +1,4 @@
-# Wheather API
+# Weather API
 
 NodeJS application to query/cache Darksky weather forecast
 
