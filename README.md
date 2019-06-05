@@ -31,9 +31,9 @@ npm run dev
 
 Following is a brief explanation about the available endpoints:
 
-`[GET] /status`: return the name and version of the application
-`[POST] /users`: return the stored users
-`[POST] /cache/:location`: return the cached JSON for the given location. Location format is $latitude:$longitude
-`[POST] /api/forecast`: return the forecast for the given location. Mandatory body parameters are: `latitude`, `longitude` and `uuid`. 
+`[GET] /status`: return the name and version of the application  
+`[POST] /users`: return the stored users  
+`[POST] /cache/:location`: return the cached JSON for the given location. Location format is $latitude:$longitude  
+`[POST] /api/forecast`: return the forecast for the given location. Mandatory body parameters are: `latitude`, `longitude` and `uuid`.  
 
 Any other endpoint will return a NOT FOUND (http status 404)
