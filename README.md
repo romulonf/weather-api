@@ -1,3 +1,7 @@
+# Wheather API
+
+NodeJS application to query/cache Darksky weather forecast
+
 # Before running the application
 
 Change the default values of `api_key` and `secret_key`. Following are two possible ways of changing them:
